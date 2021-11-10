@@ -6,10 +6,12 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile ,
 } from "firebase/auth";
 import { useState, useEffect } from "react";
 import firebaseInital from "../Firebase/firebaseInitialized";
 import { confirmAlert } from "../utility";
+import axios from 'axios';
 
 firebaseInital();
 const useFirebase = () => {
@@ -30,13 +32,16 @@ const useFirebase = () => {
 
   // create user using email and password
 
-  const createUser = (email, password, navigate) => {
+  const createUser = async(email, password, name,history) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
-        console.log(res);
-        confirmAlert("user Created");
-        navigate("/");
-        // alert("created");
+      console.log(res,"res");
+        updateUserName(name);
+        insertToDB(email,name)
+          confirmAlert("user Created");
+          history.push("/");
+        
+ 
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -55,6 +60,18 @@ const useFirebase = () => {
         const errorMessage = error.message;
       });
   };
+
+
+const updateUserName =(name)=>{
+  updateProfile(auth.currentUser, {
+    displayName: name
+  }).then(() => {
+
+  }).catch((error) => {
+   
+  })
+}
+
   //log Out
   const logOut = () => {
     const auth = getAuth();
@@ -66,6 +83,20 @@ const useFirebase = () => {
         console.log(error);
       });
   };
+
+  const insertToDB = (email,name)=>{
+    const userData={
+      name:name,
+      email:email,
+      userType: 'user'
+    }
+    axios.post('http://localhost:5000/addUser', userData)
+    .then(res => {
+      console.log(res);
+    });
+
+  }
+
 
   //auth state Change
   useEffect(() => {

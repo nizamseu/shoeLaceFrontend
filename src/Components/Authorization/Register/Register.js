@@ -1,11 +1,11 @@
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import React, { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 const Register = () => {
   const [userInput, setUserInput] = useState({});
   const { createUser } = useAuth();
-  const navigate = useNavigate();
+  const history = useHistory();
 
   //onChange Hamndler
 
@@ -22,7 +22,7 @@ const Register = () => {
       alert("Not match");
       return;
     }
-    createUser(userInput.email, userInput.password, navigate);
+    createUser(userInput.email, userInput.password,userInput.name, history);
 
     e.target.reset();
     setUserInput({});
@@ -32,6 +32,13 @@ const Register = () => {
       <h1>Register Page</h1>
       <div>
         <form className="modal" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            onChange={handleOnChange}
+            placeholder="Your name"
+          />
+          <br />
           <input
             type="email"
             name="email"

@@ -8,8 +8,9 @@ import {
 } from "react-router-dom";
 import Home from './Components/Home/Home/Home';
 import Header from './Components/Home/Header/Header';
-import Banner from './Components/Home/Banner/Banner';
-import Footer from './Components/Home/Footer/Footer';
+import Login from './Components/Authorization/Login/Login'
+import Register from './Components/Authorization/Register/Register'
+
 
 function App() {
   return (
@@ -20,11 +21,11 @@ function App() {
           <Route path="/header">
            <Header></Header>
           </Route>
-          <Route path="/banner">
-            <Banner></Banner>
+          <Route path="/login">
+            <Login></Login>
           </Route>
-          <Route path="/footer">
-           <Footer></Footer>
+          <Route path="/reg">
+           <Register></Register>
           </Route>
           <Route exact path="/">
           <Home></Home>

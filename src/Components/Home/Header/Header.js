@@ -7,10 +7,10 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
-
+import useAuth from "../../../Hooks/useAuth";
 
 const Header = () => {
-
+  const { google, user, logOut } = useAuth();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -36,7 +36,7 @@ const Header = () => {
             <Typography sx={{ mx: 3 }} variant="h6">
               Doctors
             </Typography>
-            <Typography>{"Nizam Uddin"}</Typography>
+          <Typography>{user.email && user.email}</Typography>
           </Box>
 
           <Link to={"/appointment"} color="inherit">
@@ -51,7 +51,7 @@ const Header = () => {
           <Link to={"/dashboard"} color="inherit">
             Dashboard
           </Link>
-          {/* {user.email ? (
+          {user.email ? (
             <Button onClick={logOut} color="inherit">
               LogOut
             </Button>
@@ -59,7 +59,7 @@ const Header = () => {
             <Button onClick={google} color="inherit">
               Login
             </Button>
-          )} */}
+          )}
         </Toolbar>
       </AppBar>
     </Box>
