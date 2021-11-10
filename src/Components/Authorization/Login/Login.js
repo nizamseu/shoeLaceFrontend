@@ -1,10 +1,17 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
+import { useHistory, useLocation } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 
 const Login = () => {
   const [userInput, setUserInput] = useState({});
   const { loginWithEmail } = useAuth();
+
+const history = useHistory();
+  const  location = useLocation();
+
+
+
 
   const handleOnChange = (e) => {
     const name = e.target.name;
@@ -16,11 +23,10 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    loginWithEmail(userInput.email, userInput.password);
+    loginWithEmail(userInput.email, userInput.password,history,location);
     e.target.reset();
   };
 
-  console.log(userInput);
   return (
     <div>
       <h1>Login Page</h1>

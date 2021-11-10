@@ -10,6 +10,8 @@ import Home from './Components/Home/Home/Home';
 import Header from './Components/Home/Header/Header';
 import Login from './Components/Authorization/Login/Login'
 import Register from './Components/Authorization/Register/Register'
+import Products from './Components/Home/Products/Products';
+import PrivateRoute from './Components/Authorization/PrivateRoute/PrivateRoute';
 
 
 function App() {
@@ -27,6 +29,9 @@ function App() {
           <Route path="/reg">
            <Register></Register>
           </Route>
+          <PrivateRoute path="/products">
+           <Products></Products>
+          </PrivateRoute>
           <Route exact path="/">
           <Home></Home>
           </Route>

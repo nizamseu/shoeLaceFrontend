@@ -16,23 +16,33 @@ import axios from 'axios';
 firebaseInital();
 const useFirebase = () => {
   const [user, setUser] = useState({});
+  const [isLoading,setIsLoading]=useState(true)
   const auth = getAuth();
 
   const provider = new GoogleAuthProvider();
 
+
   //signing with google
 
   const google = () => {
+    setIsLoading(true)
     signInWithPopup(auth, provider)
-      .then((res) => {})
+      .then((res) => {
+        insertToDB(res?.user?.email,res?.user?.displayName)
+        confirmAlert("Loged in Successfully");
+        // history.push("/");
+      
+      })
       .catch((error) => {
         console.log(error);
-      });
+      })
+      .finally(()=> setIsLoading(false));
   };
 
   // create user using email and password
 
   const createUser = async(email, password, name,history) => {
+    setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
       console.log(res,"res");
@@ -45,20 +55,25 @@ const useFirebase = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-      });
+      })
+      .finally(()=> setIsLoading(false));
   };
 
   //login with email and password
-  const loginWithEmail = (email, password) => {
-    console.log(email, password);
+  const loginWithEmail = (email, password,history,location) => {
+    const { from } = location?.state || { from: { pathname: "/" } };
+    console.log(location,"location");
+    console.log(from,"from");
+    setIsLoading(true)
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
         confirmAlert("logedin");
-        // alert("login");
+        history.replace(from);
       })
       .catch((error) => {
         const errorMessage = error.message;
-      });
+      })
+      .finally(()=> setIsLoading(false));
   };
 
 
@@ -74,14 +89,15 @@ const updateUserName =(name)=>{
 
   //log Out
   const logOut = () => {
-    const auth = getAuth();
+    setIsLoading(true)
     signOut(auth)
       .then(() => {
         setUser({});
       })
       .catch((error) => {
         console.log(error);
-      });
+      })
+      .finally(()=> setIsLoading(false));
   };
 
   const insertToDB = (email,name)=>{
@@ -100,12 +116,14 @@ const updateUserName =(name)=>{
 
   //auth state Change
   useEffect(() => {
+    
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
         setUser({});
       }
+      setIsLoading(false)
     });
     return () => unsubscribed;
   }, []);
@@ -116,6 +134,7 @@ const updateUserName =(name)=>{
     logOut,
     createUser,
     loginWithEmail,
+    isLoading,
   };
 };
 

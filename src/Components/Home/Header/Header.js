@@ -39,8 +39,8 @@ const Header = () => {
           <Typography>{user.email && user.email}</Typography>
           </Box>
 
-          <Link to={"/appointment"} color="inherit">
-            Appointment
+          <Link to={"/products"} color="inherit">
+            Products
           </Link>
           <Link to={"/login"} color="inherit">
             Login
