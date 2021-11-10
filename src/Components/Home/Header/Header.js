@@ -8,6 +8,8 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import './heade.css'
+
 
 const Header = () => {
   const { google, user, logOut } = useAuth();
@@ -34,11 +36,12 @@ const Header = () => {
             }}
           >
             <Typography sx={{ mx: 3 }} variant="h6">
-              Doctors
+              ShoeLace
             </Typography>
           <Typography>{user.email && user.email}</Typography>
           </Box>
 
+            <Box className='header'>
           <Link to={"/products"} color="inherit">
             Products
           </Link>
@@ -56,10 +59,11 @@ const Header = () => {
               LogOut
             </Button>
           ) : (
-            <Button onClick={google} color="inherit">
+            <Link to={'/login'} color="inherit">
               Login
-            </Button>
+            </Link>
           )}
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

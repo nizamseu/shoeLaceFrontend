@@ -12,6 +12,7 @@ import Login from './Components/Authorization/Login/Login'
 import Register from './Components/Authorization/Register/Register'
 import Products from './Components/Home/Products/Products';
 import PrivateRoute from './Components/Authorization/PrivateRoute/PrivateRoute';
+import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/reg">
            <Register></Register>
+          </Route>
+          <Route path="/dashboard">
+           <Dashboard></Dashboard>
           </Route>
           <PrivateRoute path="/products">
            <Products></Products>

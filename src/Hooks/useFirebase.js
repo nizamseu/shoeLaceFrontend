@@ -45,7 +45,6 @@ const useFirebase = () => {
     setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
-      console.log(res,"res");
         updateUserName(name);
         insertToDB(email,name)
           confirmAlert("user Created");
@@ -62,8 +61,6 @@ const useFirebase = () => {
   //login with email and password
   const loginWithEmail = (email, password,history,location) => {
     const { from } = location?.state || { from: { pathname: "/" } };
-    console.log(location,"location");
-    console.log(from,"from");
     setIsLoading(true)
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
@@ -108,7 +105,6 @@ const updateUserName =(name)=>{
     }
     axios.post('http://localhost:5000/addUser', userData)
     .then(res => {
-      console.log(res);
     });
 
   }
