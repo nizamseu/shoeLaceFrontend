@@ -1,0 +1,29 @@
+.reviewBox{
+ 
+}
+
+
+.review input,textarea{
+    width: 50vw;
+    margin-top: 10px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+}
+.review textarea{
+    height: 150px;
+}
+.btn{
+    background-color: #F62D2D;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+.error{
+    margin: 0;
+    padding: 0;
+    color: tomato;
+}

@@ -19,6 +19,7 @@ import {  Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import DashboardHome from "../DashboardHome/DashboardHome";
 import AddServvice from "../AddService/AddService";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import Review from "../Review/Review";
 
 const drawerWidth = 240;
 
@@ -34,7 +35,10 @@ function Dashboard(props) {
 
   const drawer = (
     <div>
-      <Toolbar />
+      <Toolbar >
+       ShoeLACE
+      </Toolbar>
+      
       <Divider />
       <List>
         <Link to={"/appointment"}>Appointment</Link>
@@ -43,14 +47,16 @@ function Dashboard(props) {
         <br />
         <Link to={`${url}/makeadmin`}>Make Admin</Link>
         <br />
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        <Link to={`${url}/review`}>Review</Link>
+        <br />
+        {/* {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
-        ))}
+        ))} */}
       </List>
       
     </div>
@@ -140,6 +146,9 @@ function Dashboard(props) {
             </Route>
             <Route path={`${path}/makeadmin`}  >
                 <MakeAdmin />
+            </Route>
+            <Route path={`${path}/review`}  >
+                <Review />
             </Route>
           </Switch>
         </Box>
