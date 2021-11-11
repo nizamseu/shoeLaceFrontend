@@ -20,6 +20,7 @@ import DashboardHome from "../DashboardHome/DashboardHome";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import Review from "../Review/Review";
 import AddProduct from "../AddProduct/AddProduct";
+import AllProducts from "../AllProducts/AllProducts";
 
 const drawerWidth = 240;
 
@@ -48,6 +49,8 @@ function Dashboard(props) {
         <Link to={`${url}/makeadmin`}>Make Admin</Link>
         <br />
         <Link to={`${url}/review`}>Review</Link>
+        <br />
+        <Link to={`${url}/products`}>Manage Products</Link>
         <br />
         {/* {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
@@ -149,6 +152,9 @@ function Dashboard(props) {
             </Route>
             <Route path={`${path}/review`}  >
                 <Review />
+            </Route>
+            <Route path={`${path}/products`}  >
+                <AllProducts />
             </Route>
           </Switch>
         </Box>
