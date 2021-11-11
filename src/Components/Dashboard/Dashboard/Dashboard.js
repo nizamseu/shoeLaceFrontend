@@ -17,9 +17,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import {  Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import DashboardHome from "../DashboardHome/DashboardHome";
-import AddServvice from "../AddService/AddService";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import Review from "../Review/Review";
+import AddProduct from "../AddProduct/AddProduct";
 
 const drawerWidth = 240;
 
@@ -43,7 +43,7 @@ function Dashboard(props) {
       <List>
         <Link to={"/appointment"}>Appointment</Link>
         <br />
-        <Link to={`${url}/addservice`}>Add Service</Link>
+        <Link to={`${url}/addproduct`}>Add Product</Link>
         <br />
         <Link to={`${url}/makeadmin`}>Make Admin</Link>
         <br />
@@ -141,8 +141,8 @@ function Dashboard(props) {
             <Route exact path={path}>
                <DashboardHome />
             </Route>
-            <Route path={`${path}/addservice`} >
-              <AddServvice />
+            <Route path={`${path}/addproduct`} >
+              <AddProduct />
             </Route>
             <Route path={`${path}/makeadmin`}  >
                 <MakeAdmin />
