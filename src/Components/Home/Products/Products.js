@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { Box } from '@mui/system';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import ProductsCard from './ProductsCard';
 const Products = () => {
     const [products,setProducts] = useState([]);
@@ -10,14 +10,14 @@ const Products = () => {
   
     useEffect(() => {
         setIsLoading(true)
-         axios.get('http://localhost:5000/products')
+         axios.get('https://intense-shore-62067.herokuapp.com/products')
         .then(res=>{
             setProducts(res.data);
             setIsLoading(false)
         })
       
     }, []);
-    console.log(products);
+ 
 
     if(isLoading){
         return<h1>Loading</h1>
@@ -25,7 +25,7 @@ const Products = () => {
  
     return (
         <Box>
-            <h1>Products</h1>
+             <Typography sx={{my:3,marginLeft:'50px',fontWeight:'800'}} variant='h3'>Products</Typography>
             <Container sx={{mx:'auto',display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <Grid container spacing={2}>
                    {

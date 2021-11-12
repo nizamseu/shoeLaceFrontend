@@ -15,13 +15,13 @@ const ProductsCard = ({product}) => {
                 {/* products contents  */}
                <Box sx={{padding:'20px'}}>
                     <h3 style ={{color:'#00C9A7'}} > {brand} </h3>
-                    <h3 > {title.slice(0,25)} </h3>
-                    <Box sx={{ display:'flex',marginTop:'-20px'}}>
+                    <h4 > {title.toUpperCase().slice(0,20)} </h4>
+                    <Box sx={{ display:'flex'}}>
                         <h3 style={{color: '#969696',textDecoration:'line-through',marginRight:'15px'}}>TK {parseInt(price)+154}</h3>
                         <h3 style={{color:'#FF8066'}}> TK {price}</h3>
                     </Box>
                    <p>{description.slice(0,150)}</p> 
-                   <Link to={`/details/${_id}`}><Button variant='contained' color='error'>Details</Button></Link>
+                   <Link style={{textDecoration:'none'}} to={`/details/${_id}`}><Button variant='contained' color='error'>Details</Button></Link>
                </Box>
            </Paper>
         </Grid>

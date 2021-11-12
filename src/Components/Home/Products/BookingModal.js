@@ -34,7 +34,7 @@ const [error,setError] =useState(false)
     data.photoURL=user?.photoURL;
     data.status = 'pending';
     console.log(data);
-    axios.post('http://localhost:5000/order',data)
+    axios.post('https://intense-shore-62067.herokuapp.com/order',data)
     .then(res=>{
       if(res?.data?.insertedId){
         confirmAlert('Added');

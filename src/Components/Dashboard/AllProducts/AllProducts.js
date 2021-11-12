@@ -27,7 +27,7 @@ const AllProducts = () => {
 
 
     React.useEffect(() => {
-        axios.get('http://localhost:5000/products')
+        axios.get('https://intense-shore-62067.herokuapp.com/products')
         .then(res=>{
             setProducts(res.data);
         })
@@ -37,7 +37,7 @@ const AllProducts = () => {
        deleteConfirrm()
        .then((result) => {
            if (result.isConfirmed) {
-            axios.delete(`http://localhost:5000/product/${id}`)
+            axios.delete(`https://intense-shore-62067.herokuapp.com/product/${id}`)
                .then(data=>{
                   if(data?.data?.deletedCount>0){
                       const restItem = products.filter(item=>item._id !== id);

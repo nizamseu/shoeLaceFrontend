@@ -17,7 +17,7 @@ const ProductsDetails = () => {
 
     useEffect(async() => {
         setIsLoading(true)
-       await axios.get(`http://localhost:5000/product/${id}`)
+       await axios.get(`https://intense-shore-62067.herokuapp.com/product/${id}`)
        .then(res=>{
           setProduct(res.data);
        })

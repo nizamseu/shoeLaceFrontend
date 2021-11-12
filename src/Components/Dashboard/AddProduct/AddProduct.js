@@ -12,7 +12,7 @@ const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data,e) => {
 console.log(data);
-    axios.post('http://localhost:5000/addProduct',data)
+    axios.post('https://intense-shore-62067.herokuapp.com/addProduct',data)
     .then(res=>{
       confirmAlert('Product Added')
     })

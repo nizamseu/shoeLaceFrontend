@@ -31,7 +31,7 @@ const Register = () => {
     <div>
       <h1>Register Page</h1>
       <div>
-        <form className="modal" onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"

@@ -104,7 +104,7 @@ const updateUserName =(name,photoURL)=>{
       email:email,
       userType: 'user'
     }
-    axios.post('http://localhost:5000/addUser', userData)
+    axios.post('https://intense-shore-62067.herokuapp.com/addUser', userData)
     .then(res => {
     });
 

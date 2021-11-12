@@ -21,7 +21,7 @@ import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import Review from "../Review/Review";
 import AddProduct from "../AddProduct/AddProduct";
 import AllProducts from "../AllProducts/AllProducts";
-
+import './dashboard.css'
 const drawerWidth = 240;
 
 function Dashboard(props) {
@@ -36,22 +36,22 @@ function Dashboard(props) {
 
   const drawer = (
     <div>
-      <Toolbar >
+      <Toolbar style={{backgroundColor:'#0C71EA',marginBottom:'-5px',marginRight:'-.1px'}}>
        ShoeLACE
       </Toolbar>
       
       <Divider />
-      <List>
+      <List className='menu'>
         <Link to={"/"}>Home</Link>
-        <br />
+        <br /><br />
         <Link to={`${url}/addproduct`}>Add Product</Link>
-        <br />
+        <br /><br />
         <Link to={`${url}/makeadmin`}>Make Admin</Link>
-        <br />
+        <br /><br />
         <Link to={`${url}/review`}>Review</Link>
-        <br />
+        <br /><br />
         <Link to={`${url}/products`}>Manage Products</Link>
-        <br />
+        <br /><br />
         {/* {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
@@ -76,6 +76,7 @@ function Dashboard(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          
         }}
       >
         <Toolbar>

@@ -31,7 +31,7 @@ const history = useHistory();
     <div>
       <h1>Login Page</h1>
       <div>
-        <form className="modal" onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
           <input
             name="email"
             onChange={handleOnChange}

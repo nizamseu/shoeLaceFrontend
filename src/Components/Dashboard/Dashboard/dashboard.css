@@ -1,0 +1,13 @@
+.menu a{
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    margin-top: 50px;
+    font-size: 22px;
+    font-weight: 700;
+
+}
+.menu{
+    background-color: #0C71EA;
+    height: 89vh;
+}

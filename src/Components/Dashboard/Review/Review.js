@@ -15,7 +15,7 @@ const Review = () => {
       data.email=user?.email;
       data.photoURL=user?.photoURL;
      console.log(data,"data");
-    axios.post('http://localhost:5000/review',data)
+    axios.post('https://intense-shore-62067.herokuapp.com/review',data)
     .then(res=>{
       confirmAlert('Added')
     })

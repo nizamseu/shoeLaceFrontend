@@ -10,7 +10,7 @@ const Reviews = () => {
   
     useEffect(() => {
         setIsLoading(true)
-         axios.get('http://localhost:5000/review')
+         axios.get('https://intense-shore-62067.herokuapp.com/review')
         .then(res=>{
             setReviews(res.data);
             setIsLoading(false)

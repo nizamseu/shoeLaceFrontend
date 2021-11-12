@@ -13,7 +13,7 @@ const [adminEmail,setAdminEmail]=useState('')
   const handleAdmin=async()=>{
     const email ={email:adminEmail}
     if(adminEmail.length>0){
-      const result = await axios.put('http://localhost:5000/makeAdmin',email)
+      const result = await axios.put('https://intense-shore-62067.herokuapp.com/makeAdmin',email)
       if(result?.data?.modifiedCount>0){
           confirmAlert('Updated')
       }
