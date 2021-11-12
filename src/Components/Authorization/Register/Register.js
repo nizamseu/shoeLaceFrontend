@@ -22,7 +22,7 @@ const Register = () => {
       alert("Not match");
       return;
     }
-    createUser(userInput.email, userInput.password,userInput.name, history);
+    createUser(userInput.email, userInput.password,userInput.name,userInput.photoURL, history);
 
     e.target.reset();
     setUserInput({});
@@ -37,6 +37,7 @@ const Register = () => {
             name="name"
             onChange={handleOnChange}
             placeholder="Your name"
+            required
           />
           <br />
           <input
@@ -44,6 +45,15 @@ const Register = () => {
             name="email"
             onChange={handleOnChange}
             placeholder="Your Email"
+            required
+          />
+          <br />
+          <input
+            type="text"
+            name="photoURL"
+            onChange={handleOnChange}
+            placeholder="Photo URL"
+            required
           />
           <br />
           <input
@@ -51,6 +61,7 @@ const Register = () => {
             name="password"
             onChange={handleOnChange}
             placeholder="Your Password"
+            required
           />
           <br />
           <input

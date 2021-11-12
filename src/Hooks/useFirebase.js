@@ -41,11 +41,11 @@ const useFirebase = () => {
 
   // create user using email and password
 
-  const createUser = async(email, password, name,history) => {
+  const createUser = async(email, password, name,photoURL,history) => {
     setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
-        updateUserName(name);
+        updateUserName(name,photoURL);
         insertToDB(email,name)
           confirmAlert("user Created");
           history.push("/");
@@ -64,6 +64,7 @@ const useFirebase = () => {
     setIsLoading(true)
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
+        console.log(res);
         confirmAlert("logedin");
         history.replace(from);
       })
@@ -74,9 +75,9 @@ const useFirebase = () => {
   };
 
 
-const updateUserName =(name)=>{
+const updateUserName =(name,photoURL)=>{
   updateProfile(auth.currentUser, {
-    displayName: name
+    displayName: name,photoURL:photoURL
   }).then(() => {
 
   }).catch((error) => {
@@ -131,6 +132,7 @@ const updateUserName =(name)=>{
     createUser,
     loginWithEmail,
     isLoading,
+    setIsLoading,
   };
 };
 

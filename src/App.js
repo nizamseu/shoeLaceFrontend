@@ -13,6 +13,7 @@ import Register from './Components/Authorization/Register/Register'
 import Products from './Components/Home/Products/Products';
 import PrivateRoute from './Components/Authorization/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
+import ProductsDetails from './Components/Home/Products/ProductsDetails';
 
 
 function App() {
@@ -33,6 +34,11 @@ function App() {
           <Route path="/dashboard">
            <Dashboard></Dashboard>
           </Route>
+
+          <Route path="/details/:id">
+           <ProductsDetails></ProductsDetails>
+          </Route>
+
           <PrivateRoute path="/products">
            <Products></Products>
           </PrivateRoute>

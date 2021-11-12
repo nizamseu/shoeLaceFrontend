@@ -26,8 +26,8 @@ const AllProducts = () => {
     const [products,setProducts] = React.useState([]);
 
 
-    React.useEffect(async() => {
-        await axios.get('http://localhost:5000/products')
+    React.useEffect(() => {
+        axios.get('http://localhost:5000/products')
         .then(res=>{
             setProducts(res.data);
         })

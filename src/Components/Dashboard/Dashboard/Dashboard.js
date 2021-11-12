@@ -42,7 +42,7 @@ function Dashboard(props) {
       
       <Divider />
       <List>
-        <Link to={"/appointment"}>Appointment</Link>
+        <Link to={"/"}>Home</Link>
         <br />
         <Link to={`${url}/addproduct`}>Add Product</Link>
         <br />

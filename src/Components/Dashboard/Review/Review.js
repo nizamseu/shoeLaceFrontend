@@ -5,6 +5,7 @@ import useAuth from '../../../Hooks/useAuth'
 import axios from 'axios';
 import './review.css';
 import { Box } from '@mui/system';
+import { confirmAlert } from '../../../utility';
 
 const Review = () => {
     const {user} = useAuth()
@@ -12,10 +13,11 @@ const Review = () => {
   const onSubmit = (data,e) => {
       data.name =user?.displayName;
       data.email=user?.email;
-     
+      data.photoURL=user?.photoURL;
+     console.log(data,"data");
     axios.post('http://localhost:5000/review',data)
     .then(res=>{
-      console.log(res);
+      confirmAlert('Added')
     })
       e.target.reset()
   };
@@ -30,8 +32,8 @@ const Review = () => {
         <input disabled defaultValue={user?.email} {...register("email")} /> <br />
         <input type="number" {...register("rating", { min: 1, max: 5 })} placeholder='Ratting' /> 
         {errors.rating && <p className='error'>Ratting Between 1 to 5</p>}<br />
-        <textarea {...register("review", { required: true })} placeholder='Your Review' /> <br/>
-      {errors.review && <p className='error'>This field is required</p>}
+        <textarea {...register("review", { required: true,minLength:50 })} placeholder='Your Review' /> <br/>
+      {errors.review && <p className='error'>Minimum 50 Charachter</p>}
       
       <input className='btn' type="submit" />
     </form>

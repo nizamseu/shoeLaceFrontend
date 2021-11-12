@@ -8,8 +8,19 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './heade.css'
 
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
 
 const Header = () => {
   const { google, user, logOut } = useAuth();
@@ -45,6 +56,8 @@ const Header = () => {
           <Link to={"/products"} color="inherit">
             Products
           </Link>
+
+        
           <Link to={"/login"} color="inherit">
             Login
           </Link>
@@ -54,6 +67,12 @@ const Header = () => {
           <Link to={"/dashboard"} color="inherit">
             Dashboard
           </Link>
+
+          <IconButton aria-label="cart">
+            <StyledBadge badgeContent={4} color="secondary">
+              <ShoppingCartIcon />
+            </StyledBadge>
+        </IconButton>
           {user.email ? (
             <Button onClick={logOut} color="inherit">
               LogOut
@@ -63,6 +82,7 @@ const Header = () => {
               Login
             </Link>
           )}
+           
           </Box>
         </Toolbar>
       </AppBar>
