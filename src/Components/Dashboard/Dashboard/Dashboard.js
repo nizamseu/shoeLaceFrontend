@@ -6,12 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -23,6 +18,8 @@ import AddProduct from "../AddProduct/AddProduct";
 import AllProducts from "../AllProducts/AllProducts";
 import './dashboard.css'
 import MyOrders from "../My Orders/MyOrders";
+import Pay from "../Pay/Pay";
+import ManageOrders from "../ManageOrders/ManageOrders";
 const drawerWidth = 240;
 
 function Dashboard(props) {
@@ -53,16 +50,13 @@ function Dashboard(props) {
         <br /><br />
         <Link to={`${url}/myorders`}>My Orders</Link>
         <br /><br />
+        <Link to={`${url}/pay`}>Pay</Link>
+        <br /><br />
         <Link to={`${url}/products`}>Manage Products</Link>
         <br /><br />
-        {/* {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))} */}
+        <Link to={`${url}/manageOrders`}>Manage Orders</Link>
+        <br /><br />
+       
       </List>
       
     </div>
@@ -160,8 +154,14 @@ function Dashboard(props) {
             <Route path={`${path}/products`}  >
                 <AllProducts />
             </Route>
+            <Route path={`${path}/manageOrders`}  >
+                <ManageOrders />
+            </Route>
             <Route path={`${path}/myorders`}  >
                 <MyOrders />
+            </Route>
+            <Route path={`${path}/pay`}  >
+                <Pay />
             </Route>
           </Switch>
         </Box>

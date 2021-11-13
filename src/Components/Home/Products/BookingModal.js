@@ -65,7 +65,7 @@ const [error,setError] =useState(false)
             <Box sx={{my:1}}>
               <img width='100%' height='200px' src={img} alt="" />
             </Box>
-           {/* {error && <Alert severity="error">Already Added or Something Wrong</Alert>} */}
+           {error && <Alert severity="error">Already Added or Something Wrong</Alert>}
           <Box >
           <form className="modalForm" onSubmit={handleSubmit(onSubmit)}>
           

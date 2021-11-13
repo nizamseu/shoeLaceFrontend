@@ -26,7 +26,7 @@ const MyOrders = () => {
     const email = user?.email;
 
 useEffect(async()=>{
-        const url=`http://localhost:5000/userOrders/${email}`
+        const url=`https://intense-shore-62067.herokuapp.com/userOrders/${email}`
         await axios.get(url)
          .then(data=>{
              setUserData(data.data);
@@ -38,7 +38,7 @@ useEffect(async()=>{
 
 console.log(userData);
     const handleDelete =(id)=>{
-        const url =`http://localhost:5000/deleteOrder/${id}`;
+        const url =`https://intense-shore-62067.herokuapp.com/deleteOrder/${id}`;
     
         deleteConfirrm()
         .then((result) => {
