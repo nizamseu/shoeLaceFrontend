@@ -9,6 +9,7 @@ import useAuth from '../../../Hooks/useAuth';
 import axios from 'axios';
 import { confirmAlert, errorAlert } from '../../../utility';
 import { Alert } from '@mui/material';
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -33,8 +34,8 @@ const [error,setError] =useState(false)
     data.email=user?.email;
     data.photoURL=user?.photoURL;
     data.status = 'pending';
-    console.log(data);
-    axios.post('https://intense-shore-62067.herokuapp.com/order',data)
+    const newData ={...data,...product}
+    axios.post('https://intense-shore-62067.herokuapp.com/order',newData)
     .then(res=>{
       if(res?.data?.insertedId){
         confirmAlert('Added');
@@ -64,15 +65,15 @@ const [error,setError] =useState(false)
             <Box sx={{my:1}}>
               <img width='100%' height='200px' src={img} alt="" />
             </Box>
-           {error && <Alert severity="error">Already Added or Something Wrong</Alert>}
+           {/* {error && <Alert severity="error">Already Added or Something Wrong</Alert>} */}
           <Box >
-          <form className="modal" onSubmit={handleSubmit(onSubmit)}>
+          <form className="modalForm" onSubmit={handleSubmit(onSubmit)}>
           
           <input disabled defaultValue={user?.displayName} {...register("name")} /> <br />
           <input  disabled defaultValue={user?.email} {...register("email")}  /> <br />
           <input  {...register("phone")} placeholder="Your Phone Number" /> <br />
          
-          <textarea style={{ width:'100%',height:'60px'}} {...register("address",{ required: true})} placeholder='Address' /> <br />
+          <textarea style={{ width:'100%',height:'80px'}} {...register("address",{ required: true})} placeholder='Address' /> <br />
           {errors.address && <span style={{color:'red'}}>Requred</span>} <br />
           <Button sx={{width:'100%'}} variant='contained' type="submit" >Purchase Now</Button>
           </form>

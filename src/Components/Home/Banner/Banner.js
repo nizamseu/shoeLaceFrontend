@@ -1,9 +1,6 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import SimpleImageSlider from "react-simple-image-slider";
-import img1 from '../../../images/appointment-bg.png'
-import img2 from '../../../images/bg.png'
-import img3 from '../../../images/chair.png'
 import { Link } from 'react-router-dom';
 
 const Banner = () => {
@@ -30,7 +27,7 @@ const Banner = () => {
         autoPlayDelay={2.0}
       />
       <Button variant="contained" color='error' style={{zIndex:2,marginTop:'-100px',marginLeft:'100px',position:'absolute'}}>
-        <Link style={{textDecoration:'none',color:'white'}} to={'/products'}>Poducts</Link>
+        <Link style={{textDecoration:'none',color:'white'}} to={'/products'}>Explore Yor Dream</Link>
         </Button>
     </div>
     );

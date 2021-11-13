@@ -23,6 +23,7 @@ const ProductsDetails = () => {
        })
        setIsLoading(false)
     }, []);
+console.log(product);
 
     if(isLoading){
         return<h1>Loading</h1>

@@ -14,7 +14,7 @@ import Products from './Components/Home/Products/Products';
 import PrivateRoute from './Components/Authorization/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 import ProductsDetails from './Components/Home/Products/ProductsDetails';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

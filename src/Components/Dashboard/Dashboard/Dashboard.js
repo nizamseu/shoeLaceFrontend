@@ -22,6 +22,7 @@ import Review from "../Review/Review";
 import AddProduct from "../AddProduct/AddProduct";
 import AllProducts from "../AllProducts/AllProducts";
 import './dashboard.css'
+import MyOrders from "../My Orders/MyOrders";
 const drawerWidth = 240;
 
 function Dashboard(props) {
@@ -49,6 +50,8 @@ function Dashboard(props) {
         <Link to={`${url}/makeadmin`}>Make Admin</Link>
         <br /><br />
         <Link to={`${url}/review`}>Review</Link>
+        <br /><br />
+        <Link to={`${url}/myorders`}>My Orders</Link>
         <br /><br />
         <Link to={`${url}/products`}>Manage Products</Link>
         <br /><br />
@@ -156,6 +159,9 @@ function Dashboard(props) {
             </Route>
             <Route path={`${path}/products`}  >
                 <AllProducts />
+            </Route>
+            <Route path={`${path}/myorders`}  >
+                <MyOrders />
             </Route>
           </Switch>
         </Box>

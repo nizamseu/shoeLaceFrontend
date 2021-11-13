@@ -1,8 +1,8 @@
-.modal input{
+.modalForm input{
     width: 100%;
     margin: 10px 0;
     padding: 10px;
-    height: 20px;
+    height: 45px;
     border: 1px solid lightgray;
     font-size: 18px;
 }
