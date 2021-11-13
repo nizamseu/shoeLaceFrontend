@@ -44,7 +44,7 @@ const ManageOrders = () => {
         .then(res=>{
             setOrders(res.data);
         })
-    }, [reloadData]);
+    }, [reloadData,orders]);
 // delete a single item
     const handleDelete =(id)=>{
        deleteConfirrm()

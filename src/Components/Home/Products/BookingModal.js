@@ -35,9 +35,14 @@ const [error,setError] =useState(false)
     data.email=user?.email;
     data.photoURL=user?.photoURL;
     data.status = 'pending';
+    data.brand=product.product
+    data.description=product.description
+    data.img=product.img
+    data.price=product.price
+    data.title=product.title
     const newData ={...data,...product}
-    console.log(newData);
-    axios.post('https://intense-shore-62067.herokuapp.com/order',newData)
+    console.log("newData",product);
+    axios.post('https://intense-shore-62067.herokuapp.com/order',data)
     .then(res=>{
       console.log(res);
       if(res?.data?.insertedId){
