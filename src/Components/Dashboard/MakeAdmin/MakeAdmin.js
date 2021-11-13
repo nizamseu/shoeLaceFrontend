@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import './makeAdmin.css';
 import axios from 'axios';
-import { Button } from "@mui/material";
+import { Button, Container, Grid, Paper } from "@mui/material";
 import { confirmAlert } from "../../../utility";
+import { Box } from "@mui/system";
 const MakeAdmin = () => {
 const [adminEmail,setAdminEmail]=useState('')
 
@@ -24,20 +25,20 @@ const [adminEmail,setAdminEmail]=useState('')
   }
   return (
     <div>
-      <section className="wrapper">
-        <div className="container">
-            <div className="img__container">
-            <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="salad" class="img" /> 
-            </div>   
-        <div className="content">
-           
-                <h1 className="title">Make an Admin</h1>
+      <Container  sx={{display:'flex',justifyContent:'center',alignItems:'center'}} >
+        <Paper elevation='24'>
+          <Box >
+            <img width='100%' height='250px' src= 'https://i.ibb.co/WPS0xQp/revolt-164-6w-VEHf-I-unsplash.jpg' /> 
+          </Box>   
+        
+        <div>
+                <h3  className="my-4 text-center text-info fst-italic">Make an Admin</h3>
                 <input  onBlur={HandleOnBlur}  type="text" className="mail" placeholder="Your email address" name="mail" required />
                 <Button onClick={handleAdmin} sx={{width:'100%',height:'50px',fontSize:'20px'}} variant='contained'  color="error" > Apply Now </Button>
-                <p className="text">We won’t send you spam. Unsubscribe at any time.</p>
+                
         </div>
-        </div>
-    </section>
+       </Paper>
+    </Container>
     </div>
   );
 };

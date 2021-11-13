@@ -20,12 +20,28 @@ import './dashboard.css'
 import MyOrders from "../My Orders/MyOrders";
 import Pay from "../Pay/Pay";
 import ManageOrders from "../ManageOrders/ManageOrders";
+import useAuth from "../../../Hooks/useAuth";
+import axios from "axios";
+
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { path, url } = useRouteMatch();
+  const [userData,setUserData] =React.useState([])
+  const {user} = useAuth()
+const email =user.email
+//load user
+  React.useEffect(() => {
+    axios.get(`http://localhost:5000/users/${email}`)
+    .then(res=>{
+      setUserData(res);
+    })
+
+  }, []);
+
+console.log(userData?.userType);
 
 
   const handleDrawerToggle = () => {

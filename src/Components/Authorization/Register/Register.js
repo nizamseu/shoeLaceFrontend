@@ -1,7 +1,10 @@
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import React, { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { Box } from "@mui/system";
+import { Container } from '@mui/material';
+import './reg.css'
 const Register = () => {
   const [userInput, setUserInput] = useState({});
   const { createUser } = useAuth();
@@ -28,10 +31,10 @@ const Register = () => {
     setUserInput({});
   };
   return (
-    <div>
-      <h1>Register Page</h1>
-      <div>
-        <form  onSubmit={handleSubmit}>
+    <Container>
+      <h1 className='text-center my-3 text-info'>Registration Page</h1>
+      <Grid item sx={{display:'flex', justifyContent:'center',alignItems:'center'}}>
+        <form className='reg' onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
@@ -71,13 +74,14 @@ const Register = () => {
             placeholder="Confirm Password"
           />
           <br />
-          <br />
+          
           <Button sx={{ width: "100%" }} variant="contained" type="submit">
             Submit
           </Button>
+          <Link style={{textDecoration:'none',fontSize:'23px'}} to={'/login'}>Already Register</Link> <br />
         </form>
-      </div>
-    </div>
+      </Grid>
+    </Container>
   );
 };
 

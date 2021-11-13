@@ -23,11 +23,15 @@ const Header = () => {
           className='header'
         >
           <Link to={'/'}>Home</Link>
-          <Link to={'/dashboard'}>Dashboard</Link>
+        
           <Link to={'/products'}>Products</Link>
           <Link to={'/reg'}>REG</Link>
+          <Link to={'/about'}>About</Link>
           {
-          user?.email?<button onClick={logOut}>Log Out</button>
+          user?.email?<div>
+            <Link to={'/dashboard'}>Dashboard</Link>
+            <button onClick={logOut}>Log Out</button>
+          </div>
           : <Link to={'/Login'}>Login</Link>
           }
          
