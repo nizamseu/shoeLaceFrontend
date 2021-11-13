@@ -12,23 +12,24 @@ const [loading,setLoading] = useState(true)
 //load user
 React.useEffect(() => {
   setLoading(true)
-  axios.get(`http://localhost:5000/users/${email}`)
+  axios.get(`https://intense-shore-62067.herokuapp.com/users/${email}`)
   .then(res=>{
-    setUserData(res);
+    setUserData(res.data);
+    console.log("userdata",res.data);
   }).finally(()=>setLoading(false))
 
-}, []);
+}, [email]);
 
 if(loading){
   return <h1>Loading....</h1>
 }
 console.log(userData?.userType);
-
+userData?.userType&& console.log(userData?.userType)
   return (
     <div>
       {
-        userData&& userData.userType ==='admin'? <ManageOrders></ManageOrders>
-        :<MyOrders></MyOrders>
+        userData?.email&& userData.userType !== 'admin'? <MyOrders></MyOrders>
+        :<ManageOrders></ManageOrders>
       }
       
      

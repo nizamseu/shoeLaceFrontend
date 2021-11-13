@@ -30,13 +30,16 @@ const [error,setError] =useState(false)
   const { register,reset, handleSubmit,formState: { errors } } = useForm();
   
   const onSubmit = (data,e) =>{
+    
     data.name =user?.displayName;
     data.email=user?.email;
     data.photoURL=user?.photoURL;
     data.status = 'pending';
     const newData ={...data,...product}
+    console.log(newData);
     axios.post('https://intense-shore-62067.herokuapp.com/order',newData)
     .then(res=>{
+      console.log(res);
       if(res?.data?.insertedId){
         confirmAlert('Added');
         e.target.reset()

@@ -14,7 +14,8 @@ import Products from './Components/Home/Products/Products';
 import PrivateRoute from './Components/Authorization/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 import ProductsDetails from './Components/Home/Products/ProductsDetails';
-import About from './Components/Home/About/About'
+import About from './Components/Home/About/About';
+import NotFound from './Components/Home/404/NotFound.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
 
           <Route exact path="/">
           <Home></Home>
+          </Route>
+          <Route  path="*">
+          <NotFound></NotFound>
           </Route>
         </Switch>
        </Router>

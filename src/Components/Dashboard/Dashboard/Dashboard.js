@@ -2,6 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -23,26 +24,28 @@ import ManageOrders from "../ManageOrders/ManageOrders";
 import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { path, url } = useRouteMatch();
+  const {user,logOut} = useAuth()
+
   const [userData,setUserData] =React.useState([])
-  const {user} = useAuth()
-const email =user.email
+const [loading,setLoading] = React.useState(true)
+  const email =user.email
+
 //load user
-  React.useEffect(() => {
-    axios.get(`http://localhost:5000/users/${email}`)
-    .then(res=>{
-      setUserData(res);
-    })
+React.useEffect(() => {
+  setLoading(true)
+  axios.get(`https://intense-shore-62067.herokuapp.com/users/${email}`)
+  .then(res=>{
+    setUserData(res.data);
+    console.log("userdata",res.data);
+  }).finally(()=>setLoading(false))
 
-  }, []);
-
-console.log(userData?.userType);
-
+}, [email]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -58,20 +61,29 @@ console.log(userData?.userType);
       <List className='menu'>
         <Link to={"/"}>Home</Link>
         <br /><br />
-        <Link to={`${url}/addproduct`}>Add Product</Link>
-        <br /><br />
-        <Link to={`${url}/makeadmin`}>Make Admin</Link>
-        <br /><br />
+        { userData?.email&& userData.userType !== 'admin'?
+            <span>
         <Link to={`${url}/review`}>Review</Link>
         <br /><br />
         <Link to={`${url}/myorders`}>My Orders</Link>
         <br /><br />
         <Link to={`${url}/pay`}>Pay</Link>
         <br /><br />
-        <Link to={`${url}/products`}>Manage Products</Link>
-        <br /><br />
-        <Link to={`${url}/manageOrders`}>Manage Orders</Link>
-        <br /><br />
+
+            </span>:
+            <span>
+                  <Link to={`${url}/addproduct`}>Add Product</Link>
+                <br /><br />
+                <Link to={`${url}/makeadmin`}>Make Admin</Link>
+                <br /><br />
+                <Link to={`${url}/products`}>Manage Products</Link>
+            <br /><br />
+            <Link to={`${url}/manageOrders`}>Manage Orders</Link>
+            <br /><br />
+            </span>
+            }
+
+
        
       </List>
       
@@ -105,6 +117,7 @@ console.log(userData?.userType);
           <Typography variant="h6" noWrap component="div">
             Dashboard
           </Typography>
+          <Button className='button' variant='co' onClick={logOut}>LogOut</Button>
         </Toolbar>
       </AppBar>
       <Box

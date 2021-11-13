@@ -3,11 +3,22 @@
     color: white;
     margin-left: 20px;
     margin-top: 50px;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 700;
 
 }
 .menu{
-    background-color: #0C71EA;
-    height: 89vh;
+    background-color: #2196f3;
+    height: 90vh;
+}
+.button{
+    border: none;
+    background-color: crimson;
+    padding:2px 5px;
+    width: 100px;
+   border-radius: 5px;
+   font-weight: 500;
+   margin-left: 20px;
+   color: white;
+
 }
