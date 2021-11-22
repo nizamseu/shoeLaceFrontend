@@ -3,7 +3,8 @@ import axios from "axios";
 import { Box } from "@mui/system";
 import { Container, Grid, Typography } from "@mui/material";
 import ProductsCard from "./ProductsCard";
-const Products = () => {
+
+const HomePageProducts = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [cart, setCart] = useState([]);
@@ -13,7 +14,7 @@ const Products = () => {
     axios
       .get("https://intense-shore-62067.herokuapp.com/products")
       .then((res) => {
-        setProducts(res.data);
+        setProducts(res.data.reverse().slice(0, 6));
         setIsLoading(false);
       });
   }, []);
@@ -49,4 +50,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default HomePageProducts;

@@ -44,6 +44,7 @@ const history = useHistory();
             name="password"
             onChange={handleOnChange}
             placeholder="Your Password"
+            type='password'
           />
           <br />
 

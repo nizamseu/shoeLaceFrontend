@@ -30,7 +30,7 @@ const Review = () => {
         <form className='review' onSubmit={handleSubmit(onSubmit)}>
         <input disabled defaultValue={user?.displayName} {...register("name")}  /> <br />
         <input disabled defaultValue={user?.email} {...register("email")} /> <br />
-        <input type="number" {...register("rating", { min: 1, max: 5 })} placeholder='Ratting' /> 
+        <input type="number" {...register("rating", { min: 0, max: 5 })} placeholder='Ratting' /> 
         {errors.rating && <p className='error'>Ratting Between 1 to 5</p>}<br />
         <textarea {...register("review", { required: true,minLength:50 })} placeholder='Your Review' /> <br/>
       {errors.review && <p className='error'>Minimum 50 Charachter</p>}

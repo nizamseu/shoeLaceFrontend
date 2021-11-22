@@ -88,7 +88,7 @@ const onChange=(e)=>{
     setStatus(e.target.value);
 }
 
-console.log(status);
+
     return (
       <>
         <div>
@@ -99,9 +99,8 @@ console.log(status);
               <TableHead>
                 <TableRow>
                   <TableCell>Product Title</TableCell>
-                  <TableCell align="right">Email</TableCell>
-                  <TableCell align="right">Price</TableCell>
-                  <TableCell align="right">Product Brand</TableCell>
+                  <TableCell align="right">price</TableCell>
+                  <TableCell align="right">Brand</TableCell>
                   <TableCell align="right">Status</TableCell>
                   <TableCell align="right">Action</TableCell>
     
@@ -115,9 +114,9 @@ console.log(status);
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
-                      {row.name }
+                      {row.title.slice(0,20)  }
                     </TableCell>
-                    <TableCell align="right">{row.email}</TableCell>
+                    {/* <TableCell align="right">{row.email}</TableCell> */}
                     <TableCell align="right">{row.price}</TableCell>
                     <TableCell align="right">{row.brand}</TableCell>
                     <TableCell align="right">
