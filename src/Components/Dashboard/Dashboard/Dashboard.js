@@ -2,7 +2,6 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -11,18 +10,19 @@ import List from "@mui/material/List";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import {  Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import DashboardHome from "../DashboardHome/DashboardHome";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import Review from "../Review/Review";
 import AddProduct from "../AddProduct/AddProduct";
 import AllProducts from "../AllProducts/AllProducts";
-import './dashboard.css'
+import "./dashboard.css";
 import MyOrders from "../My Orders/MyOrders";
 import Pay from "../Pay/Pay";
 import ManageOrders from "../ManageOrders/ManageOrders";
 import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 const drawerWidth = 220;
 
@@ -30,22 +30,23 @@ function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { path, url } = useRouteMatch();
-  const {user,logOut} = useAuth()
+  const { user, logOut } = useAuth();
 
-  const [userData,setUserData] =React.useState([])
-const [loading,setLoading] = React.useState(true)
-  const email =user.email
+  const [userData, setUserData] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const email = user.email;
 
-//load user
-React.useEffect(() => {
-  setLoading(true)
-  axios.get(`https://intense-shore-62067.herokuapp.com/users/${email}`)
-  .then(res=>{
-    setUserData(res.data);
-    console.log("userdata",res.data);
-  }).finally(()=>setLoading(false))
-
-}, [email]);
+  //load user
+  React.useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`https://intense-shore-62067.herokuapp.com/users/${email}`)
+      .then((res) => {
+        setUserData(res.data);
+        console.log("userdata", res.data);
+      })
+      .finally(() => setLoading(false));
+  }, [email]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -53,40 +54,53 @@ React.useEffect(() => {
 
   const drawer = (
     <div>
-      <Toolbar style={{backgroundColor:'#0C71EA',marginBottom:'-5px',marginRight:'-.1px'}}>
-       ShoeLACE
+      <Toolbar
+        style={{
+          backgroundColor: "white",
+          marginBottom: "-5px",
+          marginRight: "-.1px",
+        }}
+      >
+        ShoeLACE
       </Toolbar>
-      
+
       <Divider />
-      <List className='menu'>
+      <Divider />
+      <Divider />
+
+      <List className="menu">
         <Link to={"/"}>Home</Link>
-        <br /><br />
-        { userData?.email&& userData.userType !== 'admin'?
-            <span>
-        <Link to={`${url}/review`}>Review</Link>
-        <br /><br />
-        <Link to={`${url}/myorders`}>My Orders</Link>
-        <br /><br />
-        <Link to={`${url}/pay`}>Pay</Link>
-        <br /><br />
-
-            </span>:
-            <span>
-                  <Link to={`${url}/addproduct`}>Add Product</Link>
-                <br /><br />
-                <Link to={`${url}/makeadmin`}>Make Admin</Link>
-                <br /><br />
-                <Link to={`${url}/products`}>Manage Products</Link>
-            <br /><br />
+        <br />
+        <br />
+        {userData?.email && userData.userType !== "admin" ? (
+          <span>
+            <Link to={`${url}/review`}>Review</Link>
+            <br />
+            <br />
+            <Link to={`${url}/myorders`}>My Orders</Link>
+            <br />
+            <br />
+            <Link to={`${url}/pay`}>Pay</Link>
+            <br />
+            <br />
+          </span>
+        ) : (
+          <span>
+            <Link to={`${url}/addproduct`}>Add Product</Link>
+            <br />
+            <br />
+            <Link to={`${url}/makeadmin`}>Make Admin</Link>
+            <br />
+            <br />
+            <Link to={`${url}/products`}>Manage Products</Link>
+            <br />
+            <br />
             <Link to={`${url}/manageOrders`}>Manage Orders</Link>
-            <br /><br />
-            </span>
-            }
-
-
-       
+            <br />
+            <br />
+          </span>
+        )}
       </List>
-      
     </div>
   );
 
@@ -99,9 +113,10 @@ React.useEffect(() => {
       <AppBar
         position="fixed"
         sx={{
+          backgroundColor: "white",
+          color: "black",
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          
         }}
       >
         <Toolbar>
@@ -117,7 +132,9 @@ React.useEffect(() => {
           <Typography variant="h6" noWrap component="div">
             Dashboard
           </Typography>
-          <Button className='button' variant='co' onClick={logOut}>LogOut</Button>
+          <Button color="error" onClick={logOut}>
+            LogOut
+          </Button>
         </Toolbar>
       </AppBar>
       <Box
@@ -169,28 +186,28 @@ React.useEffect(() => {
         <Box>
           <Switch>
             <Route exact path={path}>
-               <DashboardHome />
+              <DashboardHome />
             </Route>
-            <Route path={`${path}/addproduct`} >
+            <Route path={`${path}/addproduct`}>
               <AddProduct />
             </Route>
-            <Route path={`${path}/makeadmin`}  >
-                <MakeAdmin />
+            <Route path={`${path}/makeadmin`}>
+              <MakeAdmin />
             </Route>
-            <Route path={`${path}/review`}  >
-                <Review />
+            <Route path={`${path}/review`}>
+              <Review />
             </Route>
-            <Route path={`${path}/products`}  >
-                <AllProducts />
+            <Route path={`${path}/products`}>
+              <AllProducts />
             </Route>
-            <Route path={`${path}/manageOrders`}  >
-                <ManageOrders />
+            <Route path={`${path}/manageOrders`}>
+              <ManageOrders />
             </Route>
-            <Route path={`${path}/myorders`}  >
-                <MyOrders />
+            <Route path={`${path}/myorders`}>
+              <MyOrders />
             </Route>
-            <Route path={`${path}/pay`}  >
-                <Pay />
+            <Route path={`${path}/pay`}>
+              <Pay />
             </Route>
           </Switch>
         </Box>
