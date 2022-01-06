@@ -66,7 +66,6 @@ function Dashboard(props) {
 
       <Divider />
       <Divider />
-      <Divider />
 
       <List className="menu">
         <Link to={"/"}>Home</Link>
